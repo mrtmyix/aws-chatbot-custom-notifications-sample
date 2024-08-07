@@ -1,0 +1,15 @@
+services:
+  terraform:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - type: bind
+        source: .
+        target: /work
+      - type: bind
+        source: ~/.aws
+        target: /root/.aws
+        read_only: true
+    working_dir: /work
+    tty: true

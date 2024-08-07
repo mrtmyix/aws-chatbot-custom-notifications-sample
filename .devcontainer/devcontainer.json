@@ -1,0 +1,6 @@
+{
+    "name": "terraform devcontainer",
+    "dockerComposeFile": ["../compose.yaml"],
+    "service": "terraform",
+    "workspaceFolder": "/work"
+}
