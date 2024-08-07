@@ -67,8 +67,8 @@ data "aws_iam_policy_document" "sns_topic_policy" {
 resource "awscc_chatbot_slack_channel_configuration" "example" {
   configuration_name = "example-slack-channel-config"
   iam_role_arn       = aws_iam_role.chatbot.arn
-  slack_channel_id   = "your-slack-channel-id"   # Replace with your Slack channel ID
-  slack_workspace_id = "your-slack-workspace-id" # Replace with your Slack workspace ID
+  slack_channel_id   = ""  # Slack channel ID（Cから始まるID）
+  slack_workspace_id = ""  # Slack workspace ID（Tから始まるID）
   sns_topic_arns     = [aws_sns_topic_policy.policy.arn]
 }
 
@@ -89,7 +89,10 @@ resource "aws_iam_role" "chatbot" {
   ]
 }
 EOF
-  managed_policy_arns = ["arn:aws:iam::aws:policy/AWSResourceExplorerReadOnlyAccess", "arn:aws:iam::aws:policy/AmazonQFullAccess"]
+  managed_policy_arns = [
+    "arn:aws:iam::aws:policy/AWSResourceExplorerReadOnlyAccess",
+    "arn:aws:iam::aws:policy/AmazonQFullAccess"
+  ]
 }
 
 resource "aws_iam_role_policy_attachment" "chatbot" {
