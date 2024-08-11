@@ -2,5 +2,13 @@
     "name": "terraform devcontainer",
     "dockerComposeFile": ["../compose.yaml"],
     "service": "terraform",
-    "workspaceFolder": "/work"
+    "workspaceFolder": "/work",
+    "customizations": {
+        "vscode": {
+            "settings": {},
+            "extensions": [
+                "hashicorp.terraform"
+            ]
+        }
+    }
 }

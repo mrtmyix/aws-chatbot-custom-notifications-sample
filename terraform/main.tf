@@ -33,10 +33,9 @@ resource "aws_cloudwatch_event_target" "ec2_terminated" {
         "title": "@here EC2がTerminateされました :shocked-cat:",
         "description": "しかし勉強会のデモなので問題ありません :happy-cat:",
         "nextSteps": [
-            "id: *<id>*",
             "account: *<account>*",
-            "time: *<time>* :wet-cat:＜UTCなので注意",
             "region: *<region>*",
+            "time: *<time>* :wet-cat:＜UTCなので注意",
             "instance-id: *<instance-id>* :screaming-cat:"
         ],
         "keywords": ["EC2", "Terminate", "勉強会"]
@@ -75,8 +74,8 @@ data "aws_iam_policy_document" "main" {
 resource "awscc_chatbot_slack_channel_configuration" "example_slack" {
   configuration_name = "example-slack-channel-config"
   iam_role_arn       = aws_iam_role.chatbot.arn
-  slack_channel_id   = ""  # Slack channel ID（Cから始まるID）
-  slack_workspace_id = ""  # Slack workspace ID（Tから始まるID）
+  slack_channel_id   = "" # Slack channel ID（Cから始まるID）
+  slack_workspace_id = "" # Slack workspace ID（Tから始まるID）
   sns_topic_arns     = [aws_sns_topic_policy.main.arn]
 }
 
@@ -109,7 +108,7 @@ resource "aws_iam_role_policy_attachment" "chatbot" {
 }
 
 resource "aws_iam_policy" "chatbot" {
-  name = "lambda"
+  name = "chatbot-policy"
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
